@@ -1,4 +1,4 @@
-JqueryFileuploadRailsCarrierwaveExample::Application.routes.draw do
+Jqueryfileuploadrailscarrierwave::Application.routes.draw do
   resources :documents
 
   root to: 'documents#new'

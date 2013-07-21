@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-JqueryFileuploadRailsCarrierwaveExample::Application.load_tasks
+Jqueryfileuploadrailscarrierwave::Application.load_tasks
