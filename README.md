@@ -9,6 +9,6 @@ git clone https://github.com/Phifo/jquery-fileupload-rails-carrierwave
 bundle install
 rake db:migrate
 rails s
-´´´
+```
 
 Go for it! `http:://localhost:3000`
