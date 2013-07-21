@@ -11,4 +11,4 @@ rake db:migrate
 rails s
 ```
 
-Go for it! `http:://localhost:3000`
+Go for it! `http://localhost:3000`
