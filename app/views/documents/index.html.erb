@@ -1,23 +1,71 @@
-<h1>Listing documents</h1>
-
-<table>
-  <tr>
-    <th>File</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @documents.each do |document| %>
-  <tr>
-    <td><%= document.file %></td>
-    <td><%= link_to 'Show', document %></td>
-    <td><%= link_to 'Edit', edit_document_path(document) %></td>
-    <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Document', new_document_path %>
+<!-- ======== @Region: #content ======== -->
+<div id="contentPipe">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><%= link_to "Analysis" ,analyses_path, :method => :get%></li>
+      <li><%= link_to "Pipeline" ,pipelines_path, :method => :get%></li>
+      <li class="active">Download</li>
+    </ol>
+  <div class="container">
+    <div class = "row">
+      <div class="col-sm-12 col-md-12">
+        <%= button_to '  Upload File(s)  ', new_document_path,  :method => :get, :class => 'btn btn-primary'%>
+        <p></p>
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-cloud-upload fa-2x"></i>&nbsp Upload</h4>
+          </div>
+          <div class="panel-body">
+            <p></p> <!-- Line Space -->
+            <!-- Table --> 
+            <div class="table-responsive">  
+              <table id="table"  class="table">
+                <thead>
+                  <tr>
+                    <th>FileName</th>
+                    <th>Size</th>
+                    <th>Type</th>
+                    <th>Last Update</th>
+                    <th>Create At</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <% @documents.each do |document| %>
+                <tr>
+                  <td style="word-wrap: break-word"><%= filename = File.basename(document.file.to_s)  %></td>
+                  <td><%= document.size %></td>
+                  <td><%= document.filetype %></td>
+                  <td><%= time_ago_in_words(document.updated_at) %></td>
+                  <td><%= document.created_at.strftime("%F %T") %></td>
+                  <td width="130px">           
+                    <%= link_to "".html_safe, edit_document_path(document), :class => 'btn btn-primary fa fa-pencil'%>                  
+                    <%= link_to "".html_safe ,document_path(document),
+                        :method => :delete, 
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, 
+                        :class => 'btn btn-danger fa fa-trash-o' %>
+                  </td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'dataTable/jquery-dataTables.js' %>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#table").dataTable({
+      "aaSorting": [[0, "asc"]]
+      });
+    });
+</script>
+<style type="text/css">
+    table { 
+      table-layout: fixed;
+      width: 100%
+    }
+</style>
