@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150413041420) do
+ActiveRecord::Schema.define(:version => 20150414162529) do
 
   create_table "add_alig_params", :force => true do |t|
     t.string   "aliParameters"
@@ -47,10 +47,11 @@ ActiveRecord::Schema.define(:version => 20150413041420) do
 
   create_table "documents", :force => true do |t|
     t.string   "file"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.text     "filetype"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "filetype"
     t.integer  "size"
+    t.integer  "pipeline_id"
   end
 
   create_table "models", :force => true do |t|

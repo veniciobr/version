@@ -2,7 +2,7 @@ class Document < ActiveRecord::Base
   attr_accessible :file
 
   mount_uploader :file, FileUploader
-
+  
   def to_jq_upload
     {
       "name" => read_attribute(:file),

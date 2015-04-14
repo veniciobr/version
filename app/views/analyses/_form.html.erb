@@ -1,0 +1,38 @@
+<%= form_for(@analysis) do |f| %>
+
+  <% if @analysis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@analysis.errors.count, "error") %> prohibited this analysis from being saved:</h2>
+
+      <ul>
+      <% @analysis.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% flash.clear %>
+
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :placeholder => "Analysis Title", :tabindex => 1, :required => true, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.label :details %><br>
+      <%= f.text_area :details,:rows => "5",:placeholder => "Analysis Details", :tabindex => 2, :required => true, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.button "Confirm", class: "btn btn-large btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
+      <%= link_to "Cancel", :back, {:class=>"btn btn-danger"} %>
+    </div>
+  </div>
+  
+<% end %>

@@ -2,7 +2,25 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    if !params[:pipeline_id].nil?
+      @pipeline_id = params[:pipeline_id]
+      session[:pipeline_id] = params[:pipeline_id]
+    else
+      if not session[:pipeline_id].nil?
+        @pipeline_id = session[:pipeline_id]
+      end
+    end
+    if !params[:analysis_id].nil?
+      @analysis_id = params[:analysis_id]
+      session[:analysis_id] = params[:analysis_id]
+    else
+      if not session[:analysis_id].nil?
+        @analysis_id = session[:analysis_id]
+      end
+    end    
+
+    @pipelines = Pipeline.find(@pipeline_id)
+    @documents = Document.where("pipeline_id = " + @pipeline_id.to_s)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,6 +72,14 @@ class DocumentsController < ApplicationController
     # end
 
     respond_to do |format|
+      
+      p_attr = @document.to_jq_upload
+
+logger.debug "==================================================="
+logger.debug  p_attr("size")
+logger.debug "==================================================="
+
+      @document.pipeline_id =  session[:pipeline_id]
       if @document.save
         format.html {
           render :json => [@document.to_jq_upload].to_json,

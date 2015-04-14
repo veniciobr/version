@@ -1,0 +1,68 @@
+<% flash.clear %>
+
+<div id="content">
+  <div class="container">
+
+    <%= button_to "Start Analysis" ,analyses_path, :method => :get, :class => 'btn btn-primary' %>  
+
+    <div class="block features">
+      <h2 class="title-divider">
+        <span>RNA-Seq<span class="de-em">Details</span></span>
+      </h2>
+        <p>It is an approach developed for transcriptome using sequencing technologies "next generation". It allows measurement of transcripts, determining the functional structure of the genes, measure gene expression levels and transcript discovery.</p>
+      <h2 class="title-divider">
+        <span>Pipeline</span>
+      </h2>
+    </div> <!--block features-->
+
+    <div class="center">
+      <p></p>
+      <%= image_tag "rsz_rnaseq_workflow.png"%>
+      <p></p>  
+    </div>
+
+    <div class="block features">
+        <h2 class="title-divider">
+          <span>Core<span class="de-em">Features</span></span>
+        </h2>
+        <div class="feature col-sm-6 col-md-3">
+          <a href="/">
+            <images src="images/features/feature-1.png" alt="Feature 1" class="images-responsive" />
+          </a>
+          <h3 class="title">
+            <a href="/">Mobile <span class="de-em">Friendly</span></a>
+          </h3>
+          <p>3R it's a web application, friendly use and easy to understand, it's not necessary install any software locally, everything run on server side.</p>
+        </div>
+        <div class="feature col-sm-6 col-md-3">
+          <a href="/">
+            <images src="images/features/feature-2.png" alt="Feature 2" class="images-responsive" />
+          </a>
+          <h3 class="title">
+            <a href="/">Free <span class="de-em">Support</span></a>
+          </h3>
+          <p>Suggestions, bugs or others informations</p>
+          <%= button_to "Clique here" ,static_pages_help_path, :method => :get, :class => 'btn btn-primary' %>
+        </div>
+        <div class="feature col-sm-6 col-md-3">
+          <a href="/">
+            <images src="/features/feature-3.png" alt="Feature 3" class="images-responsive" />
+          </a>
+          <h3 class="title">
+            <a href="/">Softwares <span class="de-em">free</span></a>
+          </h3>
+          <p>This web site uses open-source tools, was developed with Ruby On Rails, MySql as database and for back end process is using R(Statistic Language). The analysis results are provided as visual representations, including interactive tabular and heat map views linked to an integrated genome browser.</p>
+        </div>
+        <div class="feature col-sm-6 col-md-3">
+          <a href="/">
+            <images src="images/features/feature-4.png" alt="Feature 4" class="images-responsive" />
+          </a>
+          <h3 class="title">
+            <a href="/">99.9% <span class="de-em">Uptime</span></a>
+          </h3>
+          <p>Running in a server that never stop.</p>
+        </div>
+    </div> <!-- block features -->
+  </div> <!--Containner-->
+</div> <!--content-->
+

@@ -1,0 +1,36 @@
+<div id="content">
+  <div class="container">
+    <!-- Login form -->
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-login form-wrapper form-narrow"}) do |f| %>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+ 
+        <h3 class="title-divider">
+          <span>Login</span> 
+        </h3>
+
+        <div class="form-group">
+            <%= f.label :email, class: "control-label" %>
+            <%= f.email_field :email, class: "form-control",autofocus: true %>
+          </div>
+          
+        <div class="form-group">
+          <%= f.label :password, class: "control-label" %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+        </div>
+
+        <div class="modal-footer">
+          <small>
+            <!--<%= render "devise/shared/links" %>-->
+            <a href="#">Forgotten password?</a>
+          </small>
+        </div>
+      <% end %>
+  </div>
+</div>
