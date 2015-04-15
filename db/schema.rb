@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150414162529) do
+ActiveRecord::Schema.define(:version => 20150415182207) do
 
   create_table "add_alig_params", :force => true do |t|
     t.string   "aliParameters"
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(:version => 20150414162529) do
   end
 
   create_table "documents", :force => true do |t|
+    t.integer  "pipeline_id"
     t.string   "file"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
     t.integer  "filetype"
     t.integer  "size"
-    t.integer  "pipeline_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "models", :force => true do |t|
@@ -108,6 +108,24 @@ ActiveRecord::Schema.define(:version => 20150414162529) do
   end
 
   create_table "step_qas", :force => true do |t|
+    t.integer "pipeline_id"
+    t.integer "minQuality"
+    t.integer "firstBase"
+    t.integer "minLength"
+    t.integer "trimL"
+    t.integer "trimR"
+    t.integer "parm1"
+    t.integer "truncateStartBases"
+    t.integer "truncateEndBases"
+    t.integer "Lpattern"
+    t.integer "Rpattern"
+    t.integer "maxLmismatch"
+    t.integer "maxRmismatch"
+    t.integer "created_at",         :null => false
+    t.integer "updated_at",         :null => false
+  end
+
+  create_table "step_qas_bkp", :force => true do |t|
     t.integer  "pipeline_id"
     t.integer  "minQuality"
     t.integer  "firstBase"

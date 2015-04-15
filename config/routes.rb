@@ -1,5 +1,22 @@
 Jqueryfileuploadrailscarrierwave::Application.routes.draw do
 
+  get "result/expression"
+
+  get "result/mapping"
+
+  get "result/quality"
+
+  get "result/showquality"
+
+  get "result/showqualityDetails"
+
+  get "result/transcript"
+
+  get "result/trim"
+
+  resources :step_qas
+
+
   resources :pipelines
 
 

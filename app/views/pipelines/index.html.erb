@@ -48,7 +48,7 @@
                     <td width="100px"><%= time_ago_in_words(pipeline.updated_at) %></td>
                     <td width="130px"><%= pipeline.created_at.strftime("%F %T") %></td>
                     <td width="280px">          
-                      <%= link_to  "".html_safe, documents_path(:analysis_id => session[:analysis_id],:pipeline_id => pipeline,), :class => 'btn btn-info fa fa-cogs'%>  
+                      <%= link_to  "".html_safe, new_step_qa_path(:analysis_id => session[:analysis_id],:pipeline_id => pipeline,), :class => 'btn btn-info fa fa-cogs'%>  
                       <%= link_to "".html_safe, edit_pipeline_path(pipeline), :class => 'btn btn-primary fa fa-pencil'%>
                       <%= link_to "".html_safe, documents_path(:pipeline_id => pipeline), :class => 'btn btn-warning cancel fa fa-file'%>                    
                       <%= link_to "".html_safe ,pipeline_path(pipeline),

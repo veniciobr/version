@@ -19,7 +19,7 @@ class AnalysesController < ApplicationController
   end
 
   def show
-    respond_with(@analysis)
+    redirect_to(:action => :index)
   end
 
   def new

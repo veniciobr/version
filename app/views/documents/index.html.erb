@@ -23,22 +23,22 @@
               <table id="table"  class="table">
                 <thead>
                   <tr>
-                    <th>FileName</th>
-                    <th>Size</th>
-                    <th>Type</th>
-                    <th>Last Update</th>
-                    <th>Create At</th>
-                    <th></th>
+                    <th class="FileName">FileName</th>
+                    <th class="Size">Size</th>
+                    <th class="Type">Type</th>
+                    <th class="LastUpdate">Last Update</th>
+                    <th class="CreatAt">Create At</th>
+                    <th class="Options"></th>
                   </tr>
                 </thead>
                 <% @documents.each do |document| %>
                 <tr>
                   <td style="word-wrap: break-word"><%= filename = File.basename(document.file.to_s)  %></td>
                   <td><%= document.size %></td>
-                  <td><%= document.filetype %></td>
+                  <td><%= showFileType(document.filetype) %></td>
                   <td><%= time_ago_in_words(document.updated_at) %></td>
                   <td><%= document.created_at.strftime("%F %T") %></td>
-                  <td width="130px">           
+                  <td>           
                     <%= link_to "".html_safe, edit_document_path(document), :class => 'btn btn-primary fa fa-pencil'%>                  
                     <%= link_to "".html_safe ,document_path(document),
                         :method => :delete, 
@@ -63,9 +63,28 @@
       });
     });
 </script>
+
 <style type="text/css">
     table { 
       table-layout: fixed;
       width: 100%
+    }
+    th.FileName {
+      width: 15%
+    }
+    th.Size {
+      width: 10%; 
+    }
+    th.Type {
+      width: 20%; 
+    }    
+    th.LastUpdate {
+      width: 15%; 
+    }    
+    th.CreatAt {
+      width: 15%; 
+    }
+    th.Options {
+      width: 10%; 
     }
 </style>

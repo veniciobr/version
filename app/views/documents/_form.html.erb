@@ -10,12 +10,29 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :file %><br />
-    <%= f.text_field :file %>
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.label :File_Name %><br>
+    <%= f.text_field :file,:readonly => true, class:"form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+   <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.label :File_type %><br>
+      <%= f.select :filetype, @filetypes,:selected => @document.filetype, class:"form-group" %>
+    </div>
+  </div>
+   
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <%= f.button "Confirm", class: "btn btn-large btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
+      <%= link_to "Cancel", :back, {:class=>"btn btn-danger"} %>
+    </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.combobox').combobox();
+  });
+</script>
